@@ -10,7 +10,8 @@
 
 ## Как открыть
 
-- GitHub Pages: `https://topicspot.github.io/jackson-storm/` (включается один раз в Settings → Pages).
+- GitHub Pages: `https://topicspot.github.io/jackson-storm/` — включается один раз в Settings → Pages
+  (либо *Deploy from a branch* → `main` → `/`, либо источник *GitHub Actions*, workflow уже в репо).
 - Локально: просто открыть `index.html` в браузере. Ни сборки, ни зависимостей, ни сервера.
 
 ## Как это устроено
@@ -36,11 +37,13 @@ video.currentTime = прогресс * длительность
 ## Структура
 
 ```
-index.html                  вся страница: разметка, стили и логика скролла
+index.html                  русская версия: разметка, стили и логика скролла
+en/index.html               английская версия, те же ассеты, переключатель в шапке
 assets/storm-reveal.mp4     1920x1080, 20 fps, 21.9 с, ключевой кадр каждые 10 кадров
 assets/hero.webp            кадр для первого экрана, 1920 px
 assets/detail-0{1,2,3}.webp кадры для галереи, 1400 px
 scripts/build-assets.sh     пересобирает все ассеты из исходного видео
+.github/workflows/pages.yml автодеплой на Pages при каждом пуше в main
 ```
 
 ## Пересборка ассетов

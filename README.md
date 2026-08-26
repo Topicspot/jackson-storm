@@ -40,12 +40,14 @@ exhaust, full view) and fade in as the matching part of the car appears on scree
 ## Repository layout
 
 ```
-index.html                  the whole page: markup, CSS and the scroll logic
+index.html                  the Russian page: markup, CSS and the scroll logic
+en/index.html               the English page, same assets, language switch in the header
 assets/storm-reveal.mp4     1920x1080, 20 fps, 21.9 s, keyframe every 10 frames
 assets/hero.webp            hero still, 1920 px wide
 assets/detail-0{1,2,3}.webp gallery stills, 1400 px wide
 assets/og-preview.webp      social preview image
 scripts/build-assets.sh     regenerates every asset from the source video
+.github/workflows/pages.yml deploys the repository root to Pages on every push to main
 docs/README.ru.md           Russian version of this file
 ```
 
@@ -71,8 +73,13 @@ Key encoder settings and the reason for each:
 
 ## Deploy
 
-GitHub Pages, Settings -> Pages -> Source: "Deploy from a branch", branch `main`, folder `/`.
-Nothing else is required, the page is fully static.
+GitHub Pages, Settings -> Pages. Either source works:
+
+* **Deploy from a branch**: branch `main`, folder `/`. Nothing else is required.
+* **GitHub Actions**: the included `.github/workflows/pages.yml` uploads the repository root
+  and deploys it on every push to `main`.
+
+A `.nojekyll` file is present, so Pages serves the files as they are instead of running Jekyll.
 
 Any static host works the same way: upload `index.html` and `assets/` and you are done.
 
